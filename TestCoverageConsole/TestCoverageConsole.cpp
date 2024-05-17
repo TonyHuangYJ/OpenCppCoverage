@@ -1,4 +1,4 @@
-// OpenCppCoverage is an open source code coverage for C++.
+Ôªø// OpenCppCoverage is an open source code coverage for C++.
 // Copyright (C) 2014 OpenCppCoverage
 //
 // This program is free software: you can redistribute it and/or modify
@@ -27,70 +27,70 @@
 #include "TestCoverageConsole.hpp"
 #include "TestBasic.hpp"
 #include "TestThread.hpp"
-#include "FileWithSpecialCharÈ‡Ë.hpp"
+#include "FileWithSpecialChar√©√†√®.hpp"
 #include "TestDiff.hpp"
 
 namespace
 {
-	//-----------------------------------------------------------------------------
-	void ThrowHandledException()
-	{
-		try
-		{
-			throw 42;
-		}
-		catch (...)
-		{
-		}
-	}	
+    //-----------------------------------------------------------------------------
+    void ThrowHandledException()
+    {
+        try
+        {
+            throw 42;
+        }
+        catch (...)
+        {
+        }
+    }
 
-	//-----------------------------------------------------------------------------
-	void TestFileInSeveralModules()
-	{
-		TestCoverageSharedLib::CallSharedFunctionFromSharedLib();
-		TestCoverageSharedLib::SharedFunction(false);
-	}
+    //-----------------------------------------------------------------------------
+    void TestFileInSeveralModules()
+    {
+        TestCoverageSharedLib::CallSharedFunctionFromSharedLib();
+        TestCoverageSharedLib::SharedFunction(false);
+    }
 }
 
 //-----------------------------------------------------------------------------
 int _tmain(int argc, _TCHAR* argv[])
-{	
-	if (argc < 2)
-		std::wcout << L"Invalid number of argument:  " << argc << std::endl;
-	else
-	{
-		std::wstring type = argv[1];
+{
+    if (argc < 2)
+        std::wcout << L"Invalid number of argument:  " << argc << std::endl;
+    else
+    {
+        std::wstring type = argv[1];
 
-		if (type == TestCoverageConsole::TestBasic)
-			TestCoverageConsole::RunTestBasic();
-		else if (type == TestCoverageConsole::TestThread)
-			TestCoverageConsole::RunThread();
-		else if (type == TestCoverageConsole::TestSharedLib)
-			TestCoverageSharedLib::IsOdd(42);
-		else if (type == TestCoverageConsole::TestThrowHandledException)
-			ThrowHandledException();
-		else if (type == TestCoverageConsole::TestThrowUnHandledCppException)
-			throw 42;
-		else if (type == TestCoverageConsole::TestThrowUnHandledSEHException)
-			*reinterpret_cast<int*>(0) = 42;
-		else if (type == TestCoverageConsole::TestBreakPoint)
-			DebugBreak();
-		else if (type == TestCoverageConsole::TestChildProcess)
-			TestCoverageConsole::RunChildProcesses(argc, argv);
-		else if (type == TestCoverageConsole::TestFileInSeveralModules)
-			TestFileInSeveralModules();
-		else if (type == TestCoverageConsole::TestSpecialLineInfo)
-			TestCoverageConsole::SpecialLineInfo();
-		else if (false) // to have GetFileWithSpecialChars symbol in release.
-			TestCoverageConsole::GetFileWithSpecialChars();
-		else if (type == TestCoverageConsole::TestUnloadReloadDll)
-			TestCoverageConsole::UnloadReloadDll();
-		else if (type == TestCoverageConsole::TestDiff)
-			TestCoverageConsole::FilterByDiff();
-		else if (type == TestCoverageConsole::TestOptimizedBuild)
-			TestCoverageOptimizedBuild::TestOptimizedBuild();
-		else
-			std::wcerr << L"Unsupported type:" << type << std::endl;
-	}
-	return 0;	
+        if (type == TestCoverageConsole::TestBasic)
+            TestCoverageConsole::RunTestBasic();
+        else if (type == TestCoverageConsole::TestThread)
+            TestCoverageConsole::RunThread();
+        else if (type == TestCoverageConsole::TestSharedLib)
+            TestCoverageSharedLib::IsOdd(42);
+        else if (type == TestCoverageConsole::TestThrowHandledException)
+            ThrowHandledException();
+        else if (type == TestCoverageConsole::TestThrowUnHandledCppException)
+            throw 42;
+        else if (type == TestCoverageConsole::TestThrowUnHandledSEHException)
+            *reinterpret_cast<int*>(0) = 42;
+        else if (type == TestCoverageConsole::TestBreakPoint)
+            DebugBreak();
+        else if (type == TestCoverageConsole::TestChildProcess)
+            TestCoverageConsole::RunChildProcesses(argc, argv);
+        else if (type == TestCoverageConsole::TestFileInSeveralModules)
+            TestFileInSeveralModules();
+        else if (type == TestCoverageConsole::TestSpecialLineInfo)
+            TestCoverageConsole::SpecialLineInfo();
+        else if (false) // to have GetFileWithSpecialChars symbol in release.
+            TestCoverageConsole::GetFileWithSpecialChars();
+        else if (type == TestCoverageConsole::TestUnloadReloadDll)
+            TestCoverageConsole::UnloadReloadDll();
+        else if (type == TestCoverageConsole::TestDiff)
+            TestCoverageConsole::FilterByDiff();
+        else if (type == TestCoverageConsole::TestOptimizedBuild)
+            TestCoverageOptimizedBuild::TestOptimizedBuild();
+        else
+            std::wcerr << L"Unsupported type:" << type << std::endl;
+    }
+    return 0;
 }

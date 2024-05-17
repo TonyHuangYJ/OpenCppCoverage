@@ -57,10 +57,10 @@ namespace ExporterTest
 		//---------------------------------------------------------------------
 		Plugin::CoverageData CreateRandomCoverageData()
 		{
-			Plugin::CoverageData coverageData{ L"Testé", 42 };
+			Plugin::CoverageData coverageData{ L"Test¨¦", 42 };
 			std::default_random_engine generator;
 			std::uniform_int_distribution<int> distribution(0, 1);
-			
+
 			for (int moduleIndex = 0; moduleIndex < 100; ++moduleIndex)
 			{
 				if (distribution(generator))
@@ -70,9 +70,10 @@ namespace ExporterTest
 				}
 			}
 
-			coverageData.AddModule("éèà").AddFile("éèà").AddLine(0, true);
+			coverageData.AddModule("¨¦¨¨¨¤").AddFile("¨¦¨¨¨¤").AddLine(0, true);
 
 			return coverageData;
+
 		}
 	}
 	
